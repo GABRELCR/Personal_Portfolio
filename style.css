@@ -1,0 +1,490 @@
+/* ==========================================================================
+   VARIÁVEIS CSS (CUSTOM PROPERTIES) E TEMAS
+   Garante a consistência de cores e facilita a implementação do Dark Mode.
+   Atende ao requisito de interatividade sem uso de frameworks de CSS.
+   ========================================================================== */
+:root {
+    /* Paleta de cores do Tema Claro (Padrão) */
+    --primary: #2c3e50;
+    --primary-light: #34495e;
+    --accent: #3498db;
+    --accent-hover: #2980b9;
+    --bg: #ffffff;
+    --bg-alt: #f8f9fa;
+    --text: #2c3e50;
+    --text-light: #555;
+    --border: #dee2e6;
+    --shadow: 0 4px 6px rgba(0,0,0,0.07);
+    --header-bg: rgba(255,255,255,0.95);
+    --footer-bg: #2c3e50;
+    --footer-text: #ecf0f1;
+    --card-bg: #ffffff;
+    --input-bg: #ffffff;
+    --input-border: #ccc;
+    --transition: 0.3s ease;
+}
+
+/* Tema Escuro: Ativado via JavaScript modificando o atributo [data-theme] no HTML */
+:root[data-theme="dark"] {
+    --primary: #ecf0f1;
+    --primary-light: #bdc3c7;
+    --accent: #1abc9c;
+    --accent-hover: #16a085;
+    --bg: #1a1a2e;
+    --bg-alt: #16213e;
+    --text: #ecf0f1;
+    --text-light: #bdc3c7;
+    --border: #2c3e50;
+    --shadow: 0 4px 6px rgba(0,0,0,0.4);
+    --header-bg: rgba(26,26,46,0.95);
+    --footer-bg: #0f3460;
+    --footer-text: #ecf0f1;
+    --card-bg: #1f4068;
+    --input-bg: #1b2a49;
+    --input-border: #2c3e50;
+}
+
+/* ==========================================================================
+   ESTILOS GLOBAIS E RESET
+   Remove as margens e paddings padrão dos navegadores para unificar o layout.
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    /* Habilita a rolagem suave ao clicar nos links âncora do menu */
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    /* Adiciona transição suave para as cores durante a troca de tema */
+    transition: background-color var(--transition), color var(--transition); 
+}
+
+/* Container genérico que alinha e limita a largura do conteúdo principal */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Estilização e decorações de Títulos de Seções */
+.section-title {
+    font-family: 'Merriweather', serif;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent);
+    margin: 0.5rem auto 0;
+    border-radius: 2px;
+}
+
+/* ==========================================================================
+   HEADER & NAVEGAÇÃO
+   Menu de navegação fixo no topo da página (Sticky Header).
+   ========================================================================== */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--header-bg);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+    transition: background var(--transition);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+}
+
+.logo {
+    font-family: 'Merriweather', serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+.logo:hover {
+    color: var(--accent);
+}
+
+.navbar .nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem; 
+}
+
+.nav-link {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--text);
+    position: relative;
+    padding: 0.5rem;
+    transition: color var(--transition);
+}
+
+/* Efeito hover (sublinhado animado) nos links de navegação do menu */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--accent);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Botão Hamburguer visível apenas em dispositivos móveis (Controlado via Media Query) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+}
+
+.hamburger .bar {
+    width: 25px;
+    height: 3px;
+    background: var(--primary);
+    transition: var(--transition);
+}
+
+/* Botão de Toggle do Tema Claro/Escuro */
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--primary);
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    transition: color var(--transition);
+}
+
+.theme-toggle:hover {
+    color: var(--accent);
+}
+
+/* Controle de exibição dos SVGs puramente via CSS (melhor performance do que innerHTML no JS) */
+.icon-sun { display: none; }
+.icon-moon { display: block; }
+[data-theme="dark"] .icon-sun { display: block; }
+[data-theme="dark"] .icon-moon { display: none; }
+
+/* ==========================================================================
+   ESTRUTURA DAS SEÇÕES
+   ========================================================================== */
+.section { 
+    padding: 4rem 0; 
+    /* scroll-margin-top evita que o cabeçalho fixo cubra o título ao navegar via menu */
+    scroll-margin-top: 80px; 
+}
+
+.section-alt { 
+    background-color: var(--bg-alt); 
+}
+
+/* --- Seção Sobre Mim --- */
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.about-text { 
+    flex: 1 1 300px; 
+}
+
+.about-text h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.highlight { color: var(--accent); }
+
+/* Container da foto de perfil com CSS Animation contínua de "flutuação" */
+.avatar {
+    flex: 0 0 200px;
+    width: 200px;
+    height: 200px;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--accent);
+    display: block;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+}
+
+/* ==========================================================================
+   LAYOUT DOS CARDS (Formação & Portfólio)
+   Utilizado Flexbox com justify-content: center para alinhar simetricamente
+   inclusive os cards órfãos (que ficam sozinhos na última linha).
+   O gap foi removido e substituído por margin para garantir 100% de espaçamento.
+   ========================================================================== */
+.formation-grid, 
+.portfolio-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Comportamento responsivo e limites estruturais para os cards */
+.card, .portfolio-item {
+    flex: 1 1 280px;      /* Crescimento automático partindo de 280px */
+    max-width: 350px;     /* Impede que o card estique de ponta a ponta na tela */
+    margin: 1.5rem;       /* A SOLUÇÃO: Margin externa garante que os cards nunca grudem */
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: transform var(--transition);
+}
+
+.card { padding: 1.5rem; }
+.card:hover, .portfolio-item:hover { transform: translateY(-5px); }
+
+.card h3 {
+    font-family: 'Merriweather', serif;
+    margin-bottom: 0.8rem;
+    color: var(--accent);
+}
+
+.card ul { padding-left: 1.2rem; }
+
+/* Configurações específicas para imagens do Portfólio */
+.portfolio-item {
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-thumb {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    font-family: 'Merriweather', serif;
+    text-align: center;
+    padding: 1rem;
+}
+
+.portfolio-info { padding: 1rem; }
+.portfolio-info h3 {
+    font-family: 'Merriweather', serif;
+    margin-bottom: 0.3rem;
+}
+
+/* ==========================================================================
+   SEÇÃO CONTATO E ESTILOS DO FORMULÁRIO
+   ========================================================================== */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.form-group { margin-bottom: 1.5rem; }
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    background: var(--input-bg);
+    color: var(--text);
+    font-family: inherit;
+    transition: border var(--transition);
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+/* Container formatado para exibir erros validados pelo JavaScript */
+.error-message {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin-top: 0.2rem;
+    display: block;
+    min-height: 1.2em; /* Reserva espaço físico para não quebrar a página ao exibir o texto */
+}
+
+.btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--transition), transform 0.2s;
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    background: var(--accent-hover);
+    transform: scale(1.03);
+}
+
+/* ==========================================================================
+   MODAL DE FEEDBACK (Caixa de sucesso)
+   ========================================================================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+/* O JS adiciona a classe 'active' para exibir o modal na tela */
+.modal.active { display: flex; }
+
+.modal-content {
+    background: var(--bg);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    animation: fadeIn 0.3s ease;
+}
+
+.close-modal {
+    float: right;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-light);
+    transition: color var(--transition);
+}
+
+.close-modal:hover { color: var(--accent); }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   RODAPÉ (FOOTER)
+   ========================================================================== */
+.footer {
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 1.5rem 0;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES - RESPONSIVIDADE (MOBILE)
+   Modifica o layout para telas pequenas, ativando o menu dropdown responsivo.
+   Cumpre a exigência de compatibilidade com diversos dispositivos.
+   ========================================================================== */
+@media (max-width: 768px) {
+    .hamburger { display: flex; }
+    
+    .navbar {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--header-bg);
+        box-shadow: var(--shadow);
+        display: none;
+    }
+    
+    /* Quando o botão é clicado, o JS injeta a classe 'active' revelando a Navbar */
+    .navbar.active { display: block; }
+    
+    .nav-menu {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    /* Inverte a ordem no mobile para a foto de perfil aparecer acima do texto no header */
+    .about-container {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    
+    .avatar {
+        width: 150px;
+        height: 150px;
+    }
+}

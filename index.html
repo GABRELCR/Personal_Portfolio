@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio profissional de Gabriel Corrêa Rebustini, Desenvolvedor de Sistemas e estudante de Ciência da Computação.">
+    
+    <title>Portfólio - Gabriel Corrêa Rebustini</title>
+    
+    <link rel="icon" type="image/png" href="./Imagens/icone.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div id="modal" class="modal" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal" aria-label="Fechar modal">&times;</span>
+            <h2>Mensagem enviada com sucesso!</h2>
+            <p>Obrigado pelo contato. Retornarei em breve.</p>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">GCR</a>
+            
+            <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            
+            <nav id="navbar" class="navbar">
+                <ul class="nav-menu">
+                    <li><a href="#sobre" class="nav-link">Sobre mim</a></li>
+                    <li><a href="#formacao" class="nav-link">Formação</a></li>
+                    <li><a href="#portfolio" class="nav-link">Portfólio</a></li>
+                    <li><a href="#contato" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+            
+            <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+                <svg class="icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+                <svg class="icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="sobre" class="section">
+            <div class="container about-container">
+                <div class="about-text">
+                    <h1>Olá, eu sou <span class="highlight">Gabriel Corrêa Rebustini</span></h1><br>
+                    <p>Técnico em Desenvolvimento de Sistemas e estudante de Ciência da Computação, focado em iniciar minha carreira no mercado de tecnologia e cibersegurança. Possuo proficiência em diversas linguagens, com destaque para Python, C, Java e PHP, além de familiaridade com banco de dados SQL e metodologias ágeis.</p>
+                    <p>Busco minha primeira oportunidade profissional para aplicar meus conhecimentos técnicos em soluções eficientes e seguras. No tempo livre, atuo como Dungeon Master em campanhas de RPG de mesa.</p>
+                </div>
+                <div class="avatar">
+                    <img src="./Imagens/foto.jpg" alt="Foto de Gabriel Corrêa Rebustini">
+                </div>
+            </div>
+        </section>
+
+        <section id="formacao" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">Formação</h2>
+                <div class="formation-grid">
+                    <div class="card">
+                        <h3>Bacharelado em Ciência da Computação</h3>
+                        <p><strong>Instituição:</strong> Centro Universitário Internacional (UNINTER)</p>
+                        <p>Graduação em andamento (Início 2024). Foco em algoritmos, arquitetura de sistemas e fundamentos teóricos da computação.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Técnico em Desenvolvimento de Sistemas</h3>
+                        <p><strong>Instituição:</strong> ETEC Armando Bayeux da Silva</p>
+                        <p>Concluído em 12/2024. Base sólida em lógica de programação, banco de dados, desenvolvimento e redes.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Idiomas</h3>
+                        <p><strong>Português:</strong> Nativo</p>
+                        <p><strong>Inglês:</strong> Intermediário</p>
+                        <p><strong>Espanhol & Libras:</strong> Básico</p>
+                    </div>
+                    <div class="card">
+                        <h3>Cursos & Certificações</h3>
+                        <ul>
+                            <li>Foundations of Cybersecurity (Google)</li>
+                            <li>Segurança Cibernética (SENAI)</li>
+                            <li>IA: Fundamentos e Ética (SENAI)</li>
+                            <li>Segurança no Trabalho (SENAI)</li>
+                            <li>Excel Básico (SENAI)</li>
+                            <li>LIBRAS Básicas (ETEC)</li>
+                            <li>BASIC - NEW UBEST (UNINTER)</li>
+                            <li>Construtor de Edificações (SENAI)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="section">
+            <div class="container">
+                <h2 class="section-title">Portfólio</h2>
+                <div class="portfolio-grid">
+                    <a href="https://youtu.be/00mh74lQM5w?si=ppluiicqvb39TYbu" target="_blank" class="portfolio-item" aria-label="Acessar projeto SIOC">
+                        <div class="portfolio-thumb" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <span>Visão Computacional</span>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>S.I.O.C.</h3>
+                            <p>Sistema de Identificação de Objetos e Cores. Auxílio à acessibilidade utilizando OpenCV e YOLO em tempo real.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/GABRELCR/Python_Projects.git" target="_blank" class="portfolio-item" aria-label="Acessar repositório Python">
+                        <div class="portfolio-thumb" style="background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);">
+                            <span>Python Labs</span>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Automação & Lógica</h3>
+                            <p>Repositório de scripts em Python focado em automação de tarefas, utilitários e lógica de programação.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/GABRELCR/C_Projects.git" target="_blank" class="portfolio-item" aria-label="Acessar repositório C">
+                        <div class="portfolio-thumb" style="background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);">
+                            <span>Engenharia C</span>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Estruturas de Dados</h3>
+                            <p>Estudos em linguagem C, abordando algoritmos, tipos abstratos de dados e lógica de baixo nível.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://canva.link/0477pg0oojmi077" target="_blank" class="portfolio-item" aria-label="Acessar projeto de Marketing">
+                        <div class="portfolio-thumb" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <span>Cibersegurança</span>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Treinamento de Cibersegurança</h3>
+                            <p>Criação de materiais de treinamentos instrucionais e de conscientização para empresas.</p>
+                        </div>
+                    </a>
+
+                    <a href="#" target="_blank" class="portfolio-item" aria-label="Acessar Portfólio Nativo">
+                        <div class="portfolio-thumb" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <span>Web Nativa</span>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Portfólio Vanilla</h3>
+                            <p>Desenvolvimento web moderno utilizando apenas HTML5, CSS3 e JS puro.</p>
+                        </div>
+                    </a>
+
+                    <div class="portfolio-item" style="opacity: 0.85; border: 2px dashed var(--accent);">
+                        <div class="portfolio-thumb" style="background: #2c3e50;">
+                            <span style="font-size: 1.2rem;">[ Em Desenvolvimento ]</span>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Nmap Vulnerability Scanner</h3>
+                            <p>Automação em Python para análise de rotina e identificação de portas vulneráveis via NSE.</p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item" style="justify-content: center; align-items: center; border: 2px dashed var(--border); background: transparent; box-shadow: none;">
+                        <div class="portfolio-info" style="text-align: center; padding: 3rem 1rem;">
+                            <h3 style="color: var(--text-light);">Mais projetos em breve...</h3>
+                            <p style="font-size: 0.9rem;">Organizando códigos de sistemas legados e novos labs de segurança.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">Contato</h2>
+                
+                <form id="contact-form" class="contact-form" novalidate>
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+                        <span class="error-message" id="nome-error" aria-live="polite"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="exemplo@dominio.com" required>
+                        <span class="error-message" id="email-error" aria-live="polite"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem..." required></textarea>
+                        <span class="error-message" id="mensagem-error" aria-live="polite"></span>
+                    </div>
+                    
+                    <button type="submit" class="btn">Enviar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Gabriel Corrêa Rebustini (RU: 5275329) - Rio Claro, SP. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
